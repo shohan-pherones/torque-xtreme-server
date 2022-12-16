@@ -109,6 +109,10 @@ app.get("/", (req, res) => {
   res.send("xtreme server running...");
 });
 
+app.get("/bootcamp", (req, res) => {
+  res.send("bootcamp area");
+});
+
 app.listen(port, () => {
   console.log(`listening to port ${port}`);
 });
