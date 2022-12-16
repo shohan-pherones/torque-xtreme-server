@@ -15,12 +15,12 @@ app.use(express.json());
 function verifyJWT(req, res, next) {
   const authHeader = req.headers.authorization;
   if (!authHeader) {
-    return res.status(401).send({ message: "unauthorized access" });
+    return res.status(401).send({ message: "Unauthorized access" });
   }
   const token = authHeader.split(" ")[1];
   jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, decoded) => {
     if (err) {
-      return res.status(403).send({ message: "forbidden access" });
+      return res.status(403).send({ message: "Forbidden access" });
     }
     req.decoded = decoded;
     next();
@@ -106,13 +106,9 @@ run().catch(console.dir);
 
 // get started
 app.get("/", (req, res) => {
-  res.send("xtreme server running...");
-});
-
-app.get("/bootcamp", (req, res) => {
-  res.send("bootcamp area");
+  res.send("Welcome to Torque Xtreme Server... 😎");
 });
 
 app.listen(port, () => {
-  console.log(`listening to port ${port}`);
+  console.log(`Listening to port: ${port}`);
 });
